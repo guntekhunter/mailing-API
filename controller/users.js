@@ -17,14 +17,45 @@ class UserController {
 
   async createUser(req, res) {
     try {
+      console.log(req.body);
       const data = await userService.addUser(req);
-      console.log(data)
       return res.status(200).json({
         success: true,
         data: data,
       });
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async login(req, res) {
+    try {
+      const data = await userService.loginUser(req);
+      return res.status(200).json({
+        success: true,
+        data: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async removeUser(req, res) {
+    try {
+      const id = req.params.id;
+      const data = await userService.deleteUser(id, req);
+      console.log(data);
+      if (data !== null) {
+        return res.status(200).json({
+          success: "user deleted",
+          data: data,
+        });
+      } else {
+        return res.status(500).json({
+          data: "user with that id dosn't exist",
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 }
