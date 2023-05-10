@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-// const { findAlldata } = require("./db");
 const UserController = require("../controller/users");
 
 router.get("/", UserController.getAllUsers);
+router.post("/register", UserController.createUser);
 
 module.exports = router;

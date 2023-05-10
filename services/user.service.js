@@ -11,6 +11,18 @@ class UserService {
       console.log(err);
     }
   }
+  async addUser(req) {
+    try {
+      const user = await models.Users.create({
+        name,
+        email,
+        password,
+      });
+      return user;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 
 module.exports = new UserService();

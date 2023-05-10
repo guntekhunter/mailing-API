@@ -8,11 +8,24 @@ class UserController {
     });
   }
   async getAllUsers(req, res) {
-    const data = await userService.getAllUsers(req)
+    const data = await userService.getAllUsers(req);
     return res.status(200).json({
       success: true,
       data: data,
     });
+  }
+
+  async createUser(req, res) {
+    try {
+      const data = await userService.addUser(req);
+      console.log(data)
+      return res.status(200).json({
+        success: true,
+        data: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 

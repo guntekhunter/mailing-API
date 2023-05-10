@@ -7,14 +7,14 @@ module.exports = {
       "Users",
       [
         {
-          name: "Samsul",
+          user_name: "Samsul",
           email: "samsul@gmail.com",
           password: "123456",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Guntek",
+          user_name: "Guntek",
           email: "guntek@gmail.com",
           password: "123456",
           createdAt: new Date(),
