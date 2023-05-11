@@ -7,7 +7,6 @@ class UserService {
   // get all user
   async getAllUsers(req, res) {
     console.log("seccess");
-    console.log(req);
     try {
       const users = await models.Users.findAll();
       return users;

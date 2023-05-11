@@ -1,5 +1,7 @@
 const userService = require("../services/user.service");
 
+const jwt = require("jsonwebtoken");
+
 class UserController {
   getRoot(req, res) {
     res.status(200).json({
@@ -31,9 +33,38 @@ class UserController {
   async login(req, res) {
     try {
       const data = await userService.loginUser(req);
+
+      // create token
+      const userEmail = req.body.email;
+      const user = { email: userEmail };
+      const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "30m",
+      });
+      if (data === null) {
+        return res.status(500).json({
+          error: "wrong email or password",
+        });
+      } else {
+        return res.status(200).json({
+          accessToken: accessToken,
+          data: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async logOut(req, res) {
+    const tokenBlacklist = [];
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (token) {
+        tokenBlacklist.push(token);
+      }
       return res.status(200).json({
-        success: true,
-        data: data,
+        satatus: "logout",
+        removed: token,
       });
     } catch (error) {
       console.log(error);
@@ -61,30 +92,3 @@ class UserController {
 }
 
 module.exports = new UserController();
-// const model = require("../models");
-
-// const userController = {};
-
-// userController.getAll = async function (req, res) {
-//   try {
-//     await model.users.findAll().then((result) => {
-//       if (result.length > 0) {
-//         res.status(200).json({
-//           message: "Get Method Users",
-//           data: result,
-//         });
-//       } else {
-//         res.status(200).json({
-//           message: "Tidak ada Data",
-//           data: [],
-//         });
-//       }
-//     });
-//   } catch (error) {
-//     res.status(404).json({
-//       message: error,
-//     });
-//   }
-// };
-
-// module.exports = userController;
