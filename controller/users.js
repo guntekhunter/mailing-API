@@ -19,7 +19,6 @@ class UserController {
 
   async createUser(req, res) {
     try {
-      console.log(req.body);
       const data = await userService.addUser(req);
       return res.status(200).json({
         success: true,
@@ -74,7 +73,6 @@ class UserController {
     try {
       const id = req.params.id;
       const data = await userService.deleteUser(id, req);
-      console.log(data);
       if (data !== null) {
         return res.status(200).json({
           success: "user deleted",

@@ -5,12 +5,12 @@ class Authentication {
   async requiredToken(req, res, next) {
     try {
       const bearerToken = req.headers.authorization;
-      const tokenInclude = bearerToken.split(" ")[1];
-      console.log(tokenBlacklist)
-      if (tokenBlacklist.includes(tokenInclude)) {
-        return res.sendStatus(401);
-      }
       if (bearerToken) {
+        const tokenInclude = bearerToken.split(" ")[1];
+        console.log(tokenBlacklist);
+        if (tokenBlacklist.includes(tokenInclude)) {
+          return res.sendStatus(401);
+        }
         const token = bearerToken.split(" ")[1];
         const payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         req.user = payload;
