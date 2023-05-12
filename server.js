@@ -15,11 +15,13 @@ const userRouter = require("./routes/users");
 const mailingRouter = require("./routes/mailing");
 const tujuanRouter = require("./routes/tujuan");
 const jobDetailsRouter = require("./routes/jobDetail");
+const jobResultRouter = require("./routes/jobResult");
 
 // url for api
 app.use("/users", userRouter);
 app.use("/mailings", mailingRouter);
 app.use("/tujuans", tujuanRouter);
 app.use("/job-details", jobDetailsRouter);
+app.use("/job-results", jobResultRouter);
 
 app.listen(port, () => console.log(`app listening in port ${port}`));
