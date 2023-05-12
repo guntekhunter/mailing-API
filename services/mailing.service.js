@@ -81,24 +81,89 @@ class MailingService {
           id: id,
         },
       });
-      return isExist
+      return isExist;
     } catch (error) {
       console.log(error);
     }
   }
-  async getOne(id, req){
-    try{
+  async getOne(id, req) {
+    try {
       const mailing = await models.mailing.findOne({
         where: {
-          id:id
-        }
-      })
-      if(!mailing){
-        console.log("not found")
+          id: id,
+        },
+      });
+      if (!mailing) {
+        console.log("not found");
       }
+      return mailing;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async editMailings(id, req) {
+    try {
+      const {
+        tujuan,
+        no_surat,
+        nama_pihak_satu,
+        alamat_pihak_satu,
+        jabatan_pihak_satu,
+        nama_pihak_dua,
+        tempat_lahir_pihak_dua,
+        ktp_pihak_dua,
+        tanggal_lahir_pihak_dua,
+        alamat_pihak_dua,
+        tugas_pihak_dua,
+        job_detail,
+        job_result,
+        payment_detail,
+        start_date,
+        end_date,
+        pembayaran,
+        ttd_pihak_satu,
+        ttd_pihak_dua,
+        nama_bank,
+        no_rekening,
+        pembayaran_pertama,
+        pembayaran_kedua,
+      } = req.body;
+      const mailing = await models.mailing.findOne({
+        where: {
+          id: id,
+        },
+      });
+      if (!mailing) {
+        console.log("not found");
+      }
+      mailing.tujuan = tujuan;
+      mailing.no_surat = no_surat;
+      mailing.nama_pihak_satu = nama_pihak_satu;
+      mailing.alamat_pihak_satu = alamat_pihak_satu;
+      mailing.jabatan_pihak_satu = jabatan_pihak_satu;
+      mailing.nama_pihak_dua = nama_pihak_dua;
+      mailing.tempat_lahir_pihak_dua = tempat_lahir_pihak_dua;
+      mailing.ktp_pihak_dua = ktp_pihak_dua;
+      mailing.tanggal_lahir_pihak_dua = tanggal_lahir_pihak_dua;
+      mailing.alamat_pihak_dua = alamat_pihak_dua;
+      mailing.tugas_pihak_dua = tugas_pihak_dua;
+      mailing.job_detail = job_detail;
+      mailing.job_result = job_result;
+      mailing.payment_detail = payment_detail;
+      mailing.start_date = start_date;
+      mailing.end_date = end_date;
+      mailing.pembayaran = pembayaran;
+      mailing.ttd_pihak_satu = ttd_pihak_satu;
+      mailing.ttd_pihak_dua = ttd_pihak_dua;
+      mailing.nama_bank = nama_bank;
+      mailing.no_rekening = no_rekening;
+      mailing.pembayaran_pertama = pembayaran_pertama;
+      mailing.pembayaran_kedua = pembayaran_kedua;
+
+      await mailing.save()
       return mailing
-    }catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
   }
 }

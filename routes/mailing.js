@@ -15,5 +15,6 @@ router.delete(
   MailingController.removeMailing
 );
 router.get("/:id", Authentication.requiredToken, MailingController.getMailig);
+router.put("/:id", Authentication.requiredToken, MailingController.putMailing);
 
 module.exports = router;
