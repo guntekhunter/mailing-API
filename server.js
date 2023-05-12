@@ -13,10 +13,12 @@ app.get("/", (req, res) => {
 
 const userRouter = require("./routes/users");
 const mailingRouter = require("./routes/mailing");
+const tujuanRouter = require("./routes/tujuan");
 
 // url for api
 app.use("/users", userRouter);
 app.use("/mailings", mailingRouter);
+app.use("/tujuans", tujuanRouter);
 
 
 app.listen(port, () => console.log(`app listening in port ${port}`));
