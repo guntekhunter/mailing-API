@@ -6,7 +6,6 @@ const saltRounds = 10;
 class UserService {
   // get all user
   async getAllUsers(req, res) {
-    console.log("seccess");
     try {
       const users = await models.Users.findAll();
       return users;
