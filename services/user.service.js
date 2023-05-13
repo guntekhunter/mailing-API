@@ -47,7 +47,6 @@ class UserService {
       } else {
         return null;
       }
-      // return user;
     } catch (error) {
       console.log(error);
     }

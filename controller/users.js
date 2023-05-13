@@ -39,7 +39,8 @@ class UserController {
       const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: "30m",
       });
-      if (data === null) {
+      // console.log(data)
+      if (!data) {
         return res.status(500).json({
           error: "wrong email or password",
         });
