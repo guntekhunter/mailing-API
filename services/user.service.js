@@ -45,7 +45,7 @@ class UserService {
       if (checkPassword) {
         return user;
       } else {
-        return null;
+        return new Error("Wrong email or Password");
       }
     } catch (error) {
       console.log(error);

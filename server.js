@@ -2,10 +2,19 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = 3000;
+const cors = require("cors");
 // const MailingController = require("./controller/mailing");
 // const Authentication = require("./middleware/authentication");
 
 app.use(express.json());
+// allawing cors to fix fetching errors
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST", "PUT", "DELETE"], // Adjust the allowed methods as per your requirements
+    allowedHeaders: ["Content-Type", "Authorization"], // Adjust the allowed headers as per your requirements
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API's Workig");
