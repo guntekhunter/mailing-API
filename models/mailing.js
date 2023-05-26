@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
       tugas_pihak_dua: DataTypes.STRING,
       job_detail: DataTypes.ARRAY(DataTypes.STRING),
       job_result: DataTypes.ARRAY(DataTypes.STRING),
-      payment_detail: DataTypes.STRING,
       start_date: DataTypes.STRING,
       end_date: DataTypes.STRING,
       pembayaran: DataTypes.STRING,

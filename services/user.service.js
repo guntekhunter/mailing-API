@@ -34,21 +34,30 @@ class UserService {
   // login
   async loginUser(req, res) {
     try {
-      const enteredPasword = req.body.password;
+      const enteredPassword = req.body.password;
       const user = await models.Users.findOne({
         where: {
           email: req.body.email,
         },
       });
-      const checkPassword = await bcrypt.compare(enteredPasword, user.password);
 
-      if (checkPassword) {
+      if (!user) {
+        return null; // User not found
+      }
+
+      const isPasswordValid = await bcrypt.compare(
+        enteredPassword,
+        user.password
+      );
+
+      if (isPasswordValid) {
         return user;
       } else {
-        return new Error("Wrong email or Password");
+        return null; // Password is incorrect
       }
     } catch (error) {
       console.log(error);
+      throw new Error("Login failed");
     }
   }
 

@@ -24,7 +24,6 @@ class MailingService {
         tugas_pihak_dua,
         job_detail,
         job_result,
-        payment_detail,
         start_date,
         end_date,
         pembayaran,
@@ -58,7 +57,6 @@ class MailingService {
           : job_result
           ? [job_result]
           : [],
-        payment_detail,
         start_date,
         end_date,
         pembayaran,
@@ -136,7 +134,6 @@ class MailingService {
         tugas_pihak_dua,
         job_detail,
         job_result,
-        payment_detail,
         start_date,
         end_date,
         pembayaran,
@@ -172,7 +169,6 @@ class MailingService {
       mailing.job_result = Array.isArray(job_result)
         ? job_result
         : [job_result];
-      mailing.payment_detail = payment_detail;
       mailing.start_date = start_date;
       mailing.end_date = end_date;
       mailing.pembayaran = pembayaran;

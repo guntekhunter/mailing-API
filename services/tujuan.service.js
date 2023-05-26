@@ -19,6 +19,28 @@ class TujuanService {
       console.log(error);
     }
   }
+
+  async deleteTujuan(id, req) {
+    try {
+      const isExist = await models.tujuan.findOne({
+        where: {
+          id: id,
+        },
+      });
+      if (!isExist) {
+        console.log("not found");
+      }
+
+      models.tujuan.destroy({
+        where: {
+          id: id,
+        },
+      });
+      return isExist;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = new TujuanService();

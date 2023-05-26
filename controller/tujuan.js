@@ -23,5 +23,24 @@ class TujuanController {
       console.log(error);
     }
   }
+
+  async removeTujuan(req, res) {
+    try {
+      const id = req.params.id;
+      const data = await tujuanService.deleteTujuan(id, req);
+      if (data !== null) {
+        return res.status(200).json({
+          success: "tujuan deleted",
+          data: data,
+        });
+      } else {
+        return res.status(500).json({
+          data: "tujuan dosn't exist",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 module.exports = new TujuanController();

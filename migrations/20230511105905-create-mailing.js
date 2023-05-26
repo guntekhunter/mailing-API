@@ -51,9 +51,6 @@ module.exports = {
       job_result: {
         type: DataTypes.ARRAY(Sequelize.STRING),
       },
-      payment_detail: {
-        type: Sequelize.STRING,
-      },
       start_date: {
         type: Sequelize.STRING,
       },

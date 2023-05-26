@@ -33,18 +33,18 @@ class UserController {
     try {
       const data = await userService.loginUser(req);
 
-      // create token
-      const userEmail = req.body.email;
-      const user = { email: userEmail };
-      const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: "30m",
-      });
-      // console.log(data)
-      if (!data) {
+      if (data === null) {
         return res.status(500).json({
-          error: "wrong email or password",
+          error: "Wrong email or password",
         });
       } else {
+        // create token
+        const userEmail = req.body.email;
+        const user = { email: userEmail };
+        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+          expiresIn: "30m",
+        });
+
         return res.status(200).json({
           accessToken: accessToken,
           data: data,
