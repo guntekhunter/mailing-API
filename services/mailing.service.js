@@ -2,8 +2,33 @@ const models = require("../models/index");
 class MailingService {
   async getAllMailing(req, res) {
     try {
+      const page = parseInt(req.query.page);
+      const limit = parseInt(req.query.limit);
+
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
       const mailing = await models.mailing.findAll();
-      return mailing;
+
+      const result = {};
+      result.length = mailing.length;
+
+      if (endIndex < mailing.length) {
+        result.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+
+      if (startIndex > 0) {
+        result.previous = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
+
+      result.result = mailing.slice(startIndex, endIndex);
+      return result;
     } catch (error) {
       console.log(error);
     }
