@@ -61,10 +61,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       ttd_pihak_satu: {
-        type: DataTypes.ARRAY(Sequelize.STRING),
+        type: Sequelize.TEXT,
       },
       ttd_puhak_dua: {
-        type: DataTypes.ARRAY(Sequelize.STRING),
+        type: Sequelize.TEXT,
       },
       nama_bank: {
         type: Sequelize.STRING,

@@ -60,16 +60,8 @@ class MailingService {
         start_date,
         end_date,
         pembayaran,
-        ttd_pihak_satu: Array.isArray(ttd_pihak_satu)
-          ? ttd_pihak_satu
-          : ttd_pihak_satu
-          ? [ttd_pihak_satu]
-          : [],
-        ttd_puhak_dua: Array.isArray(ttd_puhak_dua)
-          ? ttd_puhak_dua
-          : ttd_puhak_dua
-          ? [ttd_puhak_dua]
-          : [],
+        ttd_pihak_satu,
+        ttd_puhak_dua,
         nama_bank,
         no_rekening,
         pembayaran_pertama,
@@ -172,12 +164,8 @@ class MailingService {
       mailing.start_date = start_date;
       mailing.end_date = end_date;
       mailing.pembayaran = pembayaran;
-      mailing.ttd_pihak_satu = Array.isArray(ttd_pihak_satu)
-        ? ttd_pihak_satu
-        : [ttd_pihak_satu];
-      mailing.ttd_puhak_dua = Array.isArray(ttd_puhak_dua)
-        ? ttd_puhak_dua
-        : [ttd_puhak_dua];
+      mailing.ttd_pihak_satu = ttd_pihak_satu;
+      mailing.ttd_puhak_dua = ttd_puhak_dua;
       mailing.nama_bank = nama_bank;
       mailing.no_rekening = no_rekening;
       mailing.pembayaran_pertama = pembayaran_pertama;

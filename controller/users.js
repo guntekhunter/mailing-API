@@ -42,7 +42,7 @@ class UserController {
         const userEmail = req.body.email;
         const user = { email: userEmail };
         const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-          expiresIn: "30m",
+          expiresIn: "20m",
         });
 
         return res.status(200).json({
