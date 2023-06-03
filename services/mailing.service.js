@@ -10,8 +10,11 @@ class MailingService {
 
       const mailing = await models.mailing.findAll();
 
+      const totalItems = mailing.length;
+      const totalPages = Math.ceil(totalItems / limit);
+
       const result = {};
-      result.length = mailing.length;
+      result.totalPages = totalPages;
 
       if (endIndex < mailing.length) {
         result.next = {
