@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "default",
-    "password": "a0s1gOZKoEPd",
-    "database": "verceldb",
-    "host": "ep-rapid-snowflake-355527-pooler.us-east-1.postgres.vercel-storage.com",
+    "username": "postgres",
+    "password": "060820",
+    "database": "database_development",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
@@ -14,11 +14,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "default",
-    "password": "a0s1gOZKoEPd",
-    "database": "verceldb",
-    "host": "ep-rapid-snowflake-355527-pooler.us-east-1.postgres.vercel-storage.com",
-    "dialect": "postgres",
-    "connectionString":"postgres://default:a0s1gOZKoEPd@ep-rapid-snowflake-355527-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require"
+    "username": "postgres",
+    "password": "060820",
+    "database": "database_production",
+    "host": "localhost",
+    "dialect": "postgres"
   }
 }
