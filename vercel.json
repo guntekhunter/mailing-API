@@ -1,6 +1,8 @@
 {
     "version": 2,
-    "build": "next build",
+    "build": {
+        "buildCommand": "next build"
+    },
     "routes": [
         {
             "src": "/(.*)",
