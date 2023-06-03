@@ -1,11 +1,14 @@
 {
     "version": 2,
-    "build": {
-        "command": "next build"
-    },
+    "build": [
+        {
+            "src": "./server.js",
+            "use":"next build"
+        }
+    ],
     "routes": [
         {
-            "src": "/(.*)",
+            "src":"/(.*)",
             "dest": "/"
         }
     ]
