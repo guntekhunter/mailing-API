@@ -18,8 +18,7 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "buildCommand": "next build"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
